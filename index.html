@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Змейка: уровни</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="introSplash" class="intro-splash" aria-hidden="true">
+      <div class="intro-art">
+        <img class="intro-image" src="assets/intro-snake-real.png" alt="" onerror="this.remove()" />
+        <div class="intro-snake intro-snake-back"></div>
+        <div class="intro-snake intro-snake-body"></div>
+        <div class="intro-head">
+          <span class="intro-eye intro-eye-left"></span>
+          <span class="intro-eye intro-eye-right"></span>
+          <span class="intro-tongue"></span>
+        </div>
+        <div class="intro-apple"></div>
+      </div>
+    </div>
+
+    <main class="game-shell">
+      <section class="topbar" aria-label="Панель игры">
+        <div>
+          <p class="eyebrow">Arcade</p>
+          <h1>Змейка</h1>
+        </div>
+
+        <div class="stats" aria-live="polite">
+          <div>
+            <span>Счёт</span>
+            <strong id="score">0</strong>
+          </div>
+          <div>
+            <span>Рекорд</span>
+            <strong id="best">0</strong>
+          </div>
+          <div>
+            <span>Уровень</span>
+            <strong id="levelName">Лёгкий</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="play-layout">
+        <aside class="panel controls-panel game-menu">
+          <h2>Уровни</h2>
+          <div class="level-list" role="radiogroup" aria-label="Выбор уровня">
+            <button class="level-button is-active" data-level="easy" role="radio" aria-checked="true">
+              <i class="level-face face-kind" aria-hidden="true"></i>
+              <span>Лёгкий</span>
+              <small>медленно, без стен</small>
+            </button>
+            <button class="level-button" data-level="classic" role="radio" aria-checked="false">
+              <i class="level-face face-calm" aria-hidden="true"></i>
+              <span>Классика</span>
+              <small>быстрее, 8 стен</small>
+            </button>
+            <button class="level-button" data-level="maze" role="radio" aria-checked="false">
+              <i class="level-face face-grumpy" aria-hidden="true"></i>
+              <span>Лабиринт</span>
+              <small>много стен</small>
+            </button>
+            <button class="level-button" data-level="turbo" role="radio" aria-checked="false">
+              <i class="level-face face-angry" aria-hidden="true"></i>
+              <span>Турбо</span>
+              <small>очень быстро</small>
+            </button>
+          </div>
+
+          <h2 class="section-title">Скорость</h2>
+          <div class="option-list" role="radiogroup" aria-label="Выбор скорости">
+            <button class="option-button emoji-option" data-speed="slow" role="radio" aria-checked="false" aria-label="Медленно">🐢</button>
+            <button class="option-button emoji-option is-active" data-speed="normal" role="radio" aria-checked="true" aria-label="Нормально">🐍</button>
+            <button class="option-button emoji-option" data-speed="fast" role="radio" aria-checked="false" aria-label="Быстро">🐇</button>
+          </div>
+
+          <h2 class="section-title">Масштаб карты</h2>
+          <div class="option-list" role="radiogroup" aria-label="Выбор масштаба карты">
+            <button class="option-button" data-map="small" role="radio" aria-checked="false">16 x 16</button>
+            <button class="option-button is-active" data-map="medium" role="radio" aria-checked="true">20 x 20</button>
+            <button class="option-button" data-map="large" role="radio" aria-checked="false">24 x 24</button>
+          </div>
+
+          <h2 class="section-title">Яблоки</h2>
+          <div class="stepper" aria-label="Выбор количества яблок">
+            <button id="appleMinus" type="button" aria-label="Уменьшить количество яблок">−</button>
+            <strong id="appleCount">1</strong>
+            <button id="applePlus" type="button" aria-label="Увеличить количество яблок">+</button>
+          </div>
+
+        </aside>
+
+        <section class="game-center">
+          <div class="board-wrap" aria-label="Игровое поле">
+            <canvas id="game" width="560" height="560"></canvas>
+            <div id="overlay" class="overlay">
+              <strong>Выбери уровень и нажми Играть</strong>
+              <span>Управление: стрелки или WASD</span>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="startButton" class="primary action-button"><span aria-hidden="true">▷</span><strong>Играть</strong></button>
+            <button id="pauseButton" class="action-button"><span aria-hidden="true">||</span><strong>Пауза</strong></button>
+            <button id="gameSettingsButton" class="action-button"><span aria-hidden="true">⚙</span><strong>Настройки</strong></button>
+            <button id="shuffleButton" class="utility-hidden" type="button">Перемешать</button>
+            <button id="restartButton" class="utility-hidden" type="button">Сбросить</button>
+          </div>
+        </section>
+
+        <aside class="panel info-panel game-menu">
+          <h2>Цели</h2>
+          <div class="goal-list">
+            <div><span>5 яблок</span><strong>ускорение</strong></div>
+            <div><span>10 яблок</span><strong>бонус</strong></div>
+            <div><span>стены</span><strong>опасность</strong></div>
+          </div>
+
+          <div class="touch-controls" aria-label="Сенсорное управление">
+            <button data-dir="up" aria-label="Вверх">↑</button>
+            <button data-dir="left" aria-label="Влево">←</button>
+            <button data-dir="down" aria-label="Вниз">↓</button>
+            <button data-dir="right" aria-label="Вправо">→</button>
+          </div>
+
+          <h2 class="section-title">Вид еды</h2>
+          <div class="food-list" role="radiogroup" aria-label="Выбор внешнего вида еды">
+            <button class="food-button" data-food-skin="apple" role="radio" aria-checked="false" aria-label="Яблоко">🍎</button>
+            <button class="food-button is-active" data-food-skin="mushroom" role="radio" aria-checked="true" aria-label="Гриб">🍄</button>
+            <button class="food-button" data-food-skin="strawberry" role="radio" aria-checked="false" aria-label="Клубника">🍓</button>
+            <button class="food-button" data-food-skin="watermelon" role="radio" aria-checked="false" aria-label="Арбуз">🍉</button>
+          </div>
+
+          <h2 class="section-title">Цвет змейки</h2>
+          <div class="color-list" role="radiogroup" aria-label="Выбор цвета змейки">
+            <button class="color-button color-red" data-snake-color="red" role="radio" aria-checked="false" aria-label="Красный"></button>
+            <button class="color-button color-green is-active" data-snake-color="green" role="radio" aria-checked="true" aria-label="Зелёный"></button>
+            <button class="color-button color-black" data-snake-color="black" role="radio" aria-checked="false" aria-label="Чёрный"></button>
+            <button class="color-button color-white" data-snake-color="white" role="radio" aria-checked="false" aria-label="Белый"></button>
+          </div>
+        </aside>
+      </section>
+
+      <section id="mainMenu" class="main-menu" aria-label="Главное меню">
+        <div class="menu-card">
+          <div class="menu-preview" aria-hidden="true">
+            <div class="menu-score-row">
+              <div>
+                <span class="preview-apple"></span>
+                <strong>0</strong>
+              </div>
+              <div>
+                <span class="preview-cup">🏆</span>
+                <strong>0</strong>
+              </div>
+            </div>
+            <div class="preview-scene">
+              <div class="preview-snake"></div>
+              <div class="preview-head">
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+
+          <button id="menuPlayButton" class="menu-action"><span aria-hidden="true">▷</span><strong>Играть</strong></button>
+          <button id="menuSettingsButton" class="menu-action"><span aria-hidden="true">⚙</span><strong>Настройки</strong></button>
+        </div>
+      </section>
+
+      <section id="settingsOverlay" class="settings-overlay is-hidden" aria-label="Настройки">
+        <div class="settings-sheet">
+          <button id="settingsBackButton" class="settings-back" type="button" aria-label="Назад">←</button>
+          <div id="settingsMount" class="settings-mount"></div>
+        </div>
+      </section>
+
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

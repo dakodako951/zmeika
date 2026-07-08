@@ -1,23 +1,30 @@
-# Changelog
+# История изменений
 
-All notable changes to this project are documented in this file.
+Все заметные изменения проекта описаны в этом файле.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project uses semantic versioning.
+Формат основан на [Keep a Changelog](https://keepachangelog.com/ru/1.1.0/), версии ведутся по правилам семантического версионирования.
+
+## [1.0.1] - 2026-07-08
+
+### Изменено
+
+- Переведена документация проекта на русский язык.
+- Исправлены русские строки интерфейса, которые отображались с ошибочной кодировкой.
 
 ## [1.0.0] - 2026-07-08
 
-### Added
+### Добавлено
 
-- Initial browser implementation of the Snake Levels game.
-- Canvas-based snake movement with smooth animation.
-- Level selection with Easy, Classic, Maze, and Turbo modes.
-- Obstacles for classic, maze, and turbo gameplay.
-- Configurable speed, map size, and food count.
-- Multiple food skins and snake color themes.
-- Bonus scoring behavior after milestone food collection.
-- Keyboard and touch controls.
-- Pause, restart, settings, and main menu interactions.
-- Local best-score persistence through `localStorage`.
-- Intro splash screen with `assets/intro-snake-real.png`.
-- Project documentation in `README.md`.
+- Первая браузерная версия игры «Змейка: уровни».
+- Плавное движение змейки с отрисовкой на canvas.
+- Выбор уровней: «Лёгкий», «Классика», «Лабиринт» и «Турбо».
+- Стены и препятствия для сложных режимов.
+- Настройки скорости, размера карты и количества еды.
+- Несколько видов еды и цветовых тем змейки.
+- Бонусные очки после сбора определённого количества еды.
+- Управление с клавиатуры и сенсорные кнопки.
+- Пауза, перезапуск, настройки и главное меню.
+- Сохранение рекорда через `localStorage`.
+- Стартовая заставка с изображением `assets/intro-snake-real.png`.
+- Документация проекта в `README.md`.
 

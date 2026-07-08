@@ -168,7 +168,7 @@ function resetGame() {
   levelNameEl.textContent = levels[selectedLevel].name;
   appleCountEl.textContent = selectedAppleCount;
   foods = createFoods();
-  updateOverlay("Выбери уровень и нажми Играть", "Управление: стрелки или WASD");
+  updateOverlay("Выбери уровень и нажми «Играть»", "Управление: стрелки или WASD");
 }
 
 function startGame() {
@@ -206,7 +206,7 @@ function pauseGame() {
   if (paused) {
     clearTimeout(timerId);
     cancelAnimationFrame(animationFrameId);
-    updateOverlay("Пауза", "Нажми Пауза или Пробел, чтобы продолжить");
+    updateOverlay("Пауза", "Нажми «Пауза» или пробел, чтобы продолжить");
   } else {
     overlay.classList.add("is-hidden");
     stepStartedAt = performance.now() - tickDelay;
@@ -286,7 +286,7 @@ function endGame() {
   cancelAnimationFrame(animationFrameId);
   draw();
   updateBest();
-  updateOverlay("Игра окончена", `Счёт: ${score}. Нажми Заново или Старт`);
+  updateOverlay("Игра окончена", `Счёт: ${score}. Нажми «Играть», чтобы начать заново`);
 }
 
 function updateScore() {

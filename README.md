@@ -1,20 +1,21 @@
-# Snake Levels
+# Змейка: уровни
 
-Browser snake game with selectable levels, map sizes, speed presets, multiple food skins, snake color themes, touch controls, scoring, and local best-score storage.
+Браузерная игра «Змейка» с выбором уровней, скорости, размера карты, количества еды, внешнего вида еды и цвета змейки.
 
-## Features
+## Возможности
 
-- Four game modes: Easy, Classic, Maze, and Turbo.
-- Three speed presets and three map sizes.
-- Configurable food count from 1 to 20.
-- Food skins: apple, mushroom, strawberry, and watermelon.
-- Snake color themes: red, green, black, and white.
-- Keyboard controls with Arrow keys or WASD.
-- Touch controls for mobile devices.
-- Animated canvas rendering, bonus food, obstacles, score, and best score saved in `localStorage`.
-- Intro splash screen with a snake artwork asset.
+- Четыре режима игры: «Лёгкий», «Классика», «Лабиринт» и «Турбо».
+- Три скорости и три размера карты.
+- Настройка количества еды от 1 до 20.
+- Виды еды: яблоко, гриб, клубника и арбуз.
+- Цвета змейки: красный, зелёный, чёрный и белый.
+- Управление с клавиатуры: стрелки или WASD.
+- Сенсорное управление для телефона и планшета.
+- Плавная отрисовка на canvas, бонусная еда, стены, счёт и рекорд.
+- Сохранение лучшего результата в `localStorage`.
+- Стартовая заставка с изображением змейки.
 
-## Project Structure
+## Структура проекта
 
 ```text
 .
@@ -25,20 +26,20 @@ Browser snake game with selectable levels, map sizes, speed presets, multiple fo
     └── intro-snake-real.png
 ```
 
-## How To Run
+## Как запустить
 
-Open `index.html` in a modern browser.
+Открой файл `index.html` в современном браузере.
 
-No build step or package installation is required.
+Установка зависимостей и сборка не нужны.
 
-## Controls
+## Управление
 
-- Move: Arrow keys or WASD.
-- Pause: Space or the Pause button.
-- Start: Play button, movement key, or touch direction button.
-- Settings: use the settings button to change level, speed, map size, food count, food skin, and snake color.
+- Движение: стрелки или WASD.
+- Пауза: пробел или кнопка «Пауза».
+- Старт: кнопка «Играть», клавиша движения или сенсорная кнопка направления.
+- Настройки: кнопка «Настройки» открывает выбор уровня, скорости, размера карты, количества еды, вида еды и цвета змейки.
 
-## Release Notes
+## История изменений
 
-See [CHANGELOG.md](CHANGELOG.md) for version history.
+История версий находится в [CHANGELOG.md](CHANGELOG.md).
 
